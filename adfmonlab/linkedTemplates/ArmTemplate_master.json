@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfmonlab"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
 		"AzureBlobStorage2_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
@@ -26,6 +22,10 @@
 		"AzureSqlDatabase1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"AzureBlobStorage1_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "mysecret"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -46,6 +46,10 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sqladmin"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://myvaultpracmon.vault.azure.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -74,9 +78,6 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureBlobStorage1_connectionString": {
-						"value": "[parameters('AzureBlobStorage1_connectionString')]"
-					},
 					"AzureBlobStorage2_connectionString": {
 						"value": "[parameters('AzureBlobStorage2_connectionString')]"
 					},
@@ -103,6 +104,12 @@
 					},
 					"AzureSqlDatabase1_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"AzureBlobStorage1_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('AzureBlobStorage1_properties_typeProperties_connectionString_secretName')]"
 					}
 				}
 			},

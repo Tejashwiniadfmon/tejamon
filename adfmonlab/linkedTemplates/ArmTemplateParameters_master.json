@@ -5,9 +5,6 @@
 		"factoryName": {
 			"value": "adfmonlab"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"value": ""
-		},
 		"AzureBlobStorage2_connectionString": {
 			"value": ""
 		},
@@ -19,6 +16,9 @@
 		},
 		"AzureSqlDatabase1_password": {
 			"value": ""
+		},
+		"AzureBlobStorage1_properties_typeProperties_connectionString_secretName": {
+			"value": "mysecret"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://adlsmonday.dfs.core.windows.net/"
@@ -34,6 +34,9 @@
 		},
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "sqladmin"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://myvaultpracmon.vault.azure.net/"
 		},
 		"containerUri": {
 			"value": ""

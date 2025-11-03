@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfmonlab"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
 		"AzureBlobStorage2_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
@@ -26,6 +22,10 @@
 		"AzureSqlDatabase1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"AzureBlobStorage1_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "mysecret"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -46,6 +46,10 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sqladmin"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://myvaultpracmon.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -510,10 +514,19 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+					"connectionString": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "AzureKeyVault1",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "[parameters('AzureBlobStorage1_properties_typeProperties_connectionString_secretName')]"
+					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage2')]",
@@ -580,6 +593,19 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureSqlDatabase1_password')]"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []
