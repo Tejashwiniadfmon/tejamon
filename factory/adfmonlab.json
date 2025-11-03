@@ -1,0 +1,9 @@
+{
+	"name": "adfmonlab",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e77f1e12-49d7-44f1-8e64-58729923166a",
+		"tenantId": "9cb80379-2c8e-48f3-8b95-d06c0bd27851"
+	}
+}
