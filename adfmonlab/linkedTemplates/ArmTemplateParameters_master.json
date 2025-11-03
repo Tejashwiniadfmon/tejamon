@@ -26,6 +26,9 @@
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"value": "https://adlsmonday.dfs.core.windows.net/"
 		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://myvaultpracmon.vault.azure.net/"
+		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"value": "adflabmon.database.windows.net"
 		},
@@ -34,9 +37,6 @@
 		},
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "sqladmin"
-		},
-		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"value": "https://myvaultpracmon.vault.azure.net/"
 		},
 		"containerUri": {
 			"value": ""
